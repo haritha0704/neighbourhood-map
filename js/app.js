@@ -1,11 +1,12 @@
 var map;
 var marker;
 var infowindow;
-var locations = [{  name: 'Stokes Grill and Bar',
+var locations = [{
+    name: 'Stokes Grill and Bar',
     lat: 41.264331,
     lng: -96.12829,
     fourSquareVenueID: "4adca202f964a520212e21e3"
-   
+
 }, {
     name: 'Spezia',
     lat: 41.229737,
@@ -26,26 +27,23 @@ var locations = [{  name: 'Stokes Grill and Bar',
     lat: 41.290495,
     lng: -96.115525,
     fourSquareVenueID: "5123b17fe4b04e6a14d65ad6"
-}, 
-{
-    name:'Kitchen Table',
-    lat:41.257275,
-    lng:-95.935318,
-    fourSquareVenueID:"51a8db50498e89db9a229b35"
-},
-{
-       name:'Pitch Coal-Fire Pizzeria',
-    lat:41.264788,
-    lng:-95.992151,
-    fourSquareVenueID:"4afa2a8cf964a520261722e3"
-},
-{
-       name:'Shucks Fish House & Oyster Bar',
-    lat:41.252275,
-    lng:-95.941407,
-    fourSquareVenueID:"4ae09a4ff964a520d78021e3"
-},{
-   name: 'kobe Resturant',
+}, {
+    name: 'Kitchen Table',
+    lat: 41.257275,
+    lng: -95.935318,
+    fourSquareVenueID: "51a8db50498e89db9a229b35"
+}, {
+    name: 'Pitch Coal-Fire Pizzeria',
+    lat: 41.264788,
+    lng: -95.992151,
+    fourSquareVenueID: "4afa2a8cf964a520261722e3"
+}, {
+    name: 'Shucks Fish House & Oyster Bar',
+    lat: 41.252275,
+    lng: -95.941407,
+    fourSquareVenueID: "4ae09a4ff964a520d78021e3"
+}, {
+    name: 'kobe Resturant',
     lat: 41.259166,
     lng: -96.177691,
     fourSquareVenueID: "4ee3f47d490138df8cc8157f"
@@ -75,7 +73,7 @@ function initMap() {
                     lng: location.lng
                 },
                 map: map,
-                    animation: google.maps.Animation.DROP,
+                animation: google.maps.Animation.DROP,
                 id: location.fourSquareVenueID,
 
             });
@@ -84,23 +82,23 @@ function initMap() {
             //console.log(marker.id);
             // attach click event listener to marker
             marker.addListener('click', (function(marker) {
-              return function(){
-                console.log("click");
-                  // calling the foursquare function
-                foursquarerequest(marker);
-              }
+                return function() {
+                    console.log("click");
+                    // calling the foursquare function
+                    foursquarerequest(marker);
+                }
             })(marker));
         });
 
         self.locationClicked = function(location) {
             // when the list item is clicked
-             google.maps.event.trigger(location.marker, 'click');
+            google.maps.event.trigger(location.marker, 'click');
         }
-        self.value = ko.observable('');//store the value of the search item
+        self.value = ko.observable(''); //store the value of the search item
         self.search = ko.computed(function() {
             return ko.utils.arrayFilter(self.locations(), function(place) {
                 console.log(place);
-                var match = place.name.toLowerCase().indexOf(self.value().toLowerCase()) >= 0;//if a match is found set the corresponding marker to visible
+                var match = place.name.toLowerCase().indexOf(self.value().toLowerCase()) >= 0; //if a match is found set the corresponding marker to visible
                 place.marker.setVisible(match);
                 return match;
             });
@@ -117,7 +115,7 @@ var foursquarerequest = function(marker) {
     var foursquareSecret = '2AC1SCHNC1P0LHCLXWZNKEDIHY1UZTDFGPQIINEHV4K41BCE';
     var foursquareVersion = '20170115';
     var venueFoursquareID = marker.id;
-  //  console.log(venueFoursquareID);
+    //  console.log(venueFoursquareID);
     var foursquareURL = apiURL + venueFoursquareID + '?client_id=' + foursquareClientID + '&client_secret=' + foursquareSecret + '&v=' + foursquareVersion;
 
     /*async request for the FourSquare api data*/
@@ -128,11 +126,11 @@ var foursquarerequest = function(marker) {
             /*FourSquare api data is stored here*/
             var rating = data.response.venue.rating;
             var name = data.response.venue.name;
-          
+
             /*The infowindow is udpdated with the FourSquare api data and the infowindow is opened immediately afterwards*/
-            infowindow.setContent('<div class="info">'+"Resturant name:"+ name +'</div>' + '<div class="rating">' +" FourSquare Rating: " + rating.toString()+'</div>' );
+            infowindow.setContent('<div class="info">' + "Resturant name:" + name + '</div>' + '<div class="rating">' + " FourSquare Rating: " + rating.toString() + '</div>');
             infowindow.open(map, marker);
-             toggleBounce(marker);
+            toggleBounce(marker);
         },
         /*Foursquare api error handling*/
         error: function(error) {
@@ -142,7 +140,7 @@ var foursquarerequest = function(marker) {
 }
 
 function toggleBounce(marker) {
-   marker.setAnimation(google.maps.Animation.BOUNCE);
+    marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function() {
         marker.setAnimation(null)
     }, 1700);

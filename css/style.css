@@ -1,6 +1,9 @@
     #map {
-        width: 75%;
-        height: 920px;
+        bottom: 0px;
+        height: 100%;
+        left: 0px;
+        position: relative;
+        right: 0px;
     }
     /* Optional: Makes the sample page fill the window. */
     
@@ -42,13 +45,13 @@
         -moz-border-radius: 1px;
         border-radius: 1px;
     }
-    .info{
-         font-family: "Roboto", sans-serif;
-         font-size:18px;
-         color:blue;
+    .info {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        color: blue;
     }
-    .rating{
-          font-family: "Roboto", sans-serif;
-         font-size:18px;
-         color:blue;
+    .rating {
+        font-family: "Roboto", sans-serif;
+        font-size: 18px;
+        color: blue;
     }
