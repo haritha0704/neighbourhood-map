@@ -1,0 +1,54 @@
+    #map {
+        width: 75%;
+        height: 920px;
+    }
+    /* Optional: Makes the sample page fill the window. */
+    
+    html,
+    body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+    }
+    .input {
+        width: 225px;
+        height: 25px;
+        border-radius: 6px;
+        border: 1px solid #19A7E2;
+    }
+    #header {
+        text-align: center;
+        padding-bottom: 15px;
+        text-transform: uppercase;
+    }
+    .resturants {
+        font-size: 18px;
+        padding-top: 35px;
+        padding-left: 15px;
+        text-align: left;
+        letter-spacing: 1.5px;
+        line-height: 1.8;
+    }
+    #place {
+        font-size: 18px;
+        letter-spacing: 1.2px;
+        line-height: 1.8;
+    }
+    body {
+        font-family: "Roboto", sans-serif;
+    }
+    input {
+        -webkit-border-radius: 1px;
+        -moz-border-radius: 1px;
+        border-radius: 1px;
+    }
+    .info{
+         font-family: "Roboto", sans-serif;
+         font-size:18px;
+         color:blue;
+    }
+    .rating{
+          font-family: "Roboto", sans-serif;
+         font-size:18px;
+         color:blue;
+    }
