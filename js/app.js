@@ -86,14 +86,14 @@ function initMap() {
                     console.log("click");
                     // calling the foursquare function
                     foursquarerequest(marker);
-                }
+                };
             })(marker));
         });
 
         self.locationClicked = function(location) {
             // when the list item is clicked
             google.maps.event.trigger(location.marker, 'click');
-        }
+        };
         self.value = ko.observable(''); //store the value of the search item
         self.search = ko.computed(function() {
             return ko.utils.arrayFilter(self.locations(), function(place) {
@@ -103,7 +103,7 @@ function initMap() {
                 return match;
             });
         });
-    }
+    };
 
 
 
@@ -111,7 +111,7 @@ function initMap() {
 }
 var foursquarerequest = function(marker) {
     var apiURL = 'https://api.foursquare.com/v2/venues/';
-    var foursquareClientID = '0JEJSSCAVS0CTWH10EKY44YO1SW3TV0HB5CRJYZACCCCBY3P'
+    var foursquareClientID = '0JEJSSCAVS0CTWH10EKY44YO1SW3TV0HB5CRJYZACCCCBY3P';
     var foursquareSecret = '2AC1SCHNC1P0LHCLXWZNKEDIHY1UZTDFGPQIINEHV4K41BCE';
     var foursquareVersion = '20170115';
     var venueFoursquareID = marker.id;
@@ -134,15 +134,15 @@ var foursquarerequest = function(marker) {
         },
         /*Foursquare api error handling*/
         error: function(error) {
-            alert("Error, Four Square api data could not display")
+            alert("Error, Four Square api data could not display");
         }
     });
-}
+};
 
 function toggleBounce(marker) {
     marker.setAnimation(google.maps.Animation.BOUNCE);
     setTimeout(function() {
-        marker.setAnimation(null)
+        marker.setAnimation(null);
     }, 1700);
 }
 
